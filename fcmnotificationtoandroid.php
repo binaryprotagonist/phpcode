@@ -1,6 +1,6 @@
 <?php
 
-  function toUser($device_token,$data = array()){
+  function fcmNotification($device_token,$data = array()){
    
     $registration_ids =  $device_token;
     $message = array(
@@ -39,6 +39,6 @@
 
     $token = array('f106gwPTeP0:APA91bFBnEDORIW921Vdivl0gKuFkhs8FGrIuZC3REpr7aWq7eREK0mLWCDS_YLFcKqfWW-DR4S1rafseHiVUIIxoI-YlgGixt5gtb5vWHFNclkPjwVStYhFmVqqjquPQd4L3TfLgfIj');
 
-    toUser($token,$data);
+    fcmNotification($token,$data);
 
 ?>
