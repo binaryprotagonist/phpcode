@@ -1,6 +1,6 @@
 <?php
 
-  function fcmNotification($device_token,$data = array()){
+  function fcmNotification($device_token = array() ,$data = array()){
    
     $registration_ids =  $device_token;
     $message = array(
