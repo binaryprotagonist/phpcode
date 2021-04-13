@@ -17,4 +17,15 @@
        Encapsulation is an Object Oriented Programming concept that binds together the data and functions
        that manipulate the data, and that keeps both safe from outside interference and misuse.
        ... All variables or functions defined after the public specifier are accessible by all other functions in your program
-       In normal terms Encapsulation is defined as wrapping up of data and information under a single unit. In Object Oriented Programming, Encapsulation is defined as binding together the data and the functions that manipulates them
+       In normal terms Encapsulation is defined as wrapping up of data and information under a single unit.
+       In Object Oriented Programming, Encapsulation is defined as binding together the data and the functions that manipulates them
+       
+   What is PEAR?
+   PEAR stands for PHP Extension and Application Repository
+   PEAR is short for "PHP Extension and Application Repository". 
+   The purpose of PEAR is to provide:
+   Distribution system for reusable PHP components.
+   A structured library of open-source code for PHP users
+   A system for code distribution and package maintenance 
+   A standard style for writing code in PHP
+     
