@@ -1,0 +1,10 @@
+git clone form master
+git fetch
+git checkout Development
+git pull origin Development
+git checkout -b "Branch Name"
+git status
+git add .
+git commit
+git pull origin development
+git push origin "Current working branch"
