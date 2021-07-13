@@ -14,3 +14,11 @@ git pull origin Development
 
 git commi
 git pull origin Development
+
+//////////
+
+git checkout development
+
+git pull orign development
+git checkout -b 
+
