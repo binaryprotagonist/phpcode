@@ -8,3 +8,9 @@ git add .
 git commit
 git pull origin development
 git push origin "Current working branch"
+
+git checkout -b "RTC-1212"
+git pull origin Development
+
+git commi
+git pull origin Development
