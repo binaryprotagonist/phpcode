@@ -31,6 +31,8 @@ Tor Brower
 
 https://en.wikipedia.org/wiki/Facebook_onion_address
 
-create own onion domain
-   
+Create own onion domain
+
+HiddenServiceDir C:\Users\HP\Desktop\Tor Domain
+HiddenServicePort 80 127.0.0.1:80
 
