@@ -1,0 +1,33 @@
+const { createStore } = require('redux');
+
+const initialState = {
+    count : 0
+}
+
+const myReducer = function ( state = initialState , action){
+         let newState = {...state}
+         if(action.type == 'INIT'){
+              return {
+                    count : newState.count + 1
+              }
+         }
+         if(action.type == 'DESC'){
+            return {
+                  count : newState.count - 1
+            }
+       }
+         return newState
+}
+
+
+const store = createStore(myReducer)
+
+        store.subscribe(()=>{
+            console.log(`Logs : ${JSON.stringify(store.getState())}`);
+        });
+
+        store.dispatch({type : 'INIT'})
+        store.dispatch({type : 'INIT'})
+        store.dispatch({type : 'INIT'})
+        store.dispatch({type : 'INIT'})
+        store.dispatch({type : 'INIT'})
