@@ -1,0 +1,39 @@
+   $('#formId').on('submit',function(e){
+      e.preventDefault();
+       
+        let form = $(this);
+        let data  = form.serialize();
+        $.ajax({
+            type: "POST",
+            url: "{{route('business.absenceCalender.reject')}}",  
+            data: data,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            beforeSend:function(){
+                launchpreloader();
+            },
+            complete:function(){
+                stopPreloader();
+            },
+            success: function(response){
+               form.find('p.error_msg').remove();
+               if(response.status == 'success'){
+                     $('#Leave_reject_modal').modal('hide');
+                     toastr.success(response.message);
+                     setTimeout(function(){ location.reload(); }, 2000);
+               }
+               if(response.status == 'failed'){
+                  toastr.error(response.message);
+               }
+               if(response.status == 'error'){
+                  $.each(response.errors, function (key, val) {
+                     form.find('[name='+key+']').after('<p class="error_msg">'+val+'</p>');
+                  });
+               }
+            },
+            error: function(xhr, status, error){
+                console.error(xhr);
+            }
+        });
+    });
