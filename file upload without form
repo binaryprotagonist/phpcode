@@ -1,0 +1,44 @@
+ $('#create-ad-form').on('submit',function(e){
+     	e.preventDefault();
+			let form  = $(this);
+ 		    let data  = new FormData(this);
+			$.ajax({
+				"headers":{
+				'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+			},
+				'type':'POST',
+				'url' : form.attr('action'),
+				'data' : data,
+				cache : false,
+				contentType : false,
+				processData : false,
+			beforeSend: function() {
+			},
+			'success' : function(response){
+				
+				form.find('span.text-error').remove();
+				if(response.status == 'warning'){
+                     $('#posting-safety-modal').modal('show');
+				}
+				if(response.status == 'success'){
+   			      toastr.success(response.message);
+   	 		      setTimeout(function(){ window.location.href="{{route('myAds')}}" }, 1000);
+				}
+				if(response.status == 'failed'){
+  			       $('input[name="is_agree"]').val('0');
+				   toastr.error(response.message);
+				}
+				if(response.status == 'error'){
+					$('input[name="is_agree"]').val('0');
+				 $.each(response.errors, function (key, val) {
+				    form.find('[name='+key+']').after('<span class="text-error">'+val+'</span>');
+				 });
+				}
+			},
+			'error' : function(error){
+				console.log(error);
+			},
+			complete: function() {
+			},
+			});
+     });
