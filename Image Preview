@@ -1,0 +1,7 @@
+ <script>
+        //Image Preview
+        $('input[name="image"]').on('change',function(e){
+            tmppath = URL.createObjectURL(event.target.files[0]);
+            $('.image-preview').attr('src',tmppath);
+        });
+ </script>
