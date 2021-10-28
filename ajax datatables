@@ -1,0 +1,68 @@
+ 
+    if ($request->ajax()){
+             $users = User::where('role_id','2')->orderBy('id','desc')->get();
+            return datatables()->of($users)
+                                ->addColumn('action', function($users){
+                                    return '<a href="'.url('admin/user/detail').'/'.$users->id.'"><img alt=""  src="'.asset('business/img/Group 86.png').'"/></a>';
+                                })
+                                ->addColumn('fullname', function($users){
+                                    return $users->firstname.' '.$users->lastname;
+                                })
+                                ->rawColumns(['action'])
+                                ->toJson();
+        }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ $(function() {
+    $.fn.dataTable.ext.errMode = 'false';
+    $('#table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{route('admin.user-management')}}",
+      order: [[ 0, "desc" ]],
+      columns: [
+        {
+         "title": "Sr.",
+         render: function (data, type, row, meta) {
+         return meta.row + meta.settings._iDisplayStart + 1;
+        }
+        },
+        {
+         'title': '',
+         bSortable: false,
+         render: function (data, type, row, meta) {
+            return `<img alt=""  src="${row.profileImageUrl}" class="dashboard_table_user_img" />`;
+        }
+        },
+        { data: 'fullname', name: 'fullname'},
+        { data: 'unique_id', name: 'unique_id'},
+        { data: 'joining_date', name: 'joining_date'},
+        { data: null,
+          render: function(data){ 
+            var label1 = "-";
+            return label1;
+          }
+        },
+        { data: null,
+          render: function(data){ 
+            var label1 = "-";
+            return label1;
+          }
+        },
+        { data: null,
+          render: function(data){ 
+            var label1 = "-";
+            return label1;
+          }
+        },
+        { data: 'action', name: 'action'}
+      ]
+    });
+  });
