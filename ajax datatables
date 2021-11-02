@@ -11,6 +11,8 @@
                                 ->rawColumns(['action'])
                                 ->toJson();
         }
+        
+           $('#table').DataTable().ajax.reload();
  
  
  
