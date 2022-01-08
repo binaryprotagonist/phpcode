@@ -1,3 +1,4 @@
+DELIMITER $$
 CREATE FUNCTION `getDistance`(`lat1` VARCHAR(200), `lng1` VARCHAR(200), `lat2` VARCHAR(200), `lng2` VARCHAR(200)) RETURNS varchar(10) CHARSET utf8
 begin
 declare distance varchar(10);
@@ -16,4 +17,5 @@ then
 else 
 return distance;
 end if;
-end
+end$$
+DELIMITER ;
